@@ -10,3 +10,14 @@ target="./Config.toml"
 [[container.copy.files]]
 sourceFile="./resources/public.crt"
 target="./resources/public.crt"
+
+[[cloud.config.secrets]]
+file="./DatabaseConfig.toml"
+name="database-secrets"
+
+[[cloud.config.secrets]]
+file="./TwilioConfig.toml"
+name="twilio-secrets"
+
+[[cloud.config.files]]
+file="./Config.toml"

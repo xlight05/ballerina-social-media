@@ -1,0 +1,4 @@
+enableSmsNotification = true
+accountSId = "sid1"
+authToken = "token1"
+messageSenderId = "1234"
