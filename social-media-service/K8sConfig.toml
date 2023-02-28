@@ -1,7 +1,8 @@
 moderate = true
 enableSmsNotification = false
 natsUrl = "nats://localhost:4222"
-stsHost = "localhost"
+stsHost = "sts-service-svc"
+sentimentHost = "sentiment-api"
 
 [ballerina.observe]
 tracingEnabled=true

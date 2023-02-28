@@ -1,10 +1,25 @@
 import ballerina/sql;
 import ballerinax/mysql;
 import ballerinax/mysql.driver as _;
+// import ballerina/cloud;
+
+type DataBaseConfig record {|
+    string host;
+    int port;
+    string user;
+    string password;
+    string database;
+|};
+
+configurable DataBaseConfig databaseConfig = ?;
 
 // Initializes the database as a prerequisite to `Database Access` samples.
+
+// @cloud:Task
 public function main() returns sql:Error? {
-    mysql:Client mysqlClient = check new (host = "localhost", port = 3306, user = "root", password = "dummypassword");
+    
+    mysql:Client mysqlClient = check new (...databaseConfig);
+    //check new (host = "localhost", port = 3306, user = "root", password = "dummypassword");
 
     // Creates `users` table in the database.
     _ = check mysqlClient->execute(`CREATE TABLE social_media_database.users (

@@ -1,4 +1,4 @@
-stsHost = "localhost"
+stsHost = "sts-service-svc"
 
 [ballerina.observe]
 tracingEnabled=true

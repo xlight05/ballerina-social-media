@@ -3,6 +3,9 @@ repository="shafreen"
 name="sentiment-api"
 tag="0.0.1"
 
+[cloud.deployment]
+internal_domain_name="sentiment-api"
+
 [[container.copy.files]]
 sourceFile="./Config.toml"
 target="./Config.toml"
@@ -14,3 +17,6 @@ target="./resources/private.key"
 [[container.copy.files]]
 sourceFile="./resources/public.crt"
 target="./resources/public.crt"
+
+[[cloud.config.files]]
+file="./K8sConfig.toml"

@@ -5,6 +5,11 @@ services:
     image: 'shafreen/social-media:0.0.1'
     ports:
       - '9090:9090'
+    secrets:
+      - source: database_config  
+        target: /home/ballerina/DatabaseConfig.toml
+    environment:
+      - BAL_CONFIG_FILES=/home/ballerina/DatabaseConfig.toml:/home/ballerina/Config.toml
     depends_on: 
       - jaeger
       - sentiment-analysis
@@ -18,6 +23,11 @@ services:
       - jaeger
       - nats
       - mysql-setup
+    secrets:
+      - source: twilio_config
+        target: /home/ballerina/TwilioConfig.toml
+    environment:
+      - BAL_CONFIG_FILES=/home/ballerina/TwilioConfig.toml:/home/ballerina/Config.toml
     network_mode: "host"
 
   sentiment-analysis:
@@ -45,9 +55,32 @@ services:
   mysql-setup:
     image: 'shafreen/db-setup:0.0.1'
     network_mode: "host"
+    depends_on: 
+      mysql: 
+          condition: service_healthy
 
+  mysql:
+    image: 'mysql:8-oracle'
+    ports:
+      - '3306:3306'
+    network_mode: "host"
+    environment:
+      - MYSQL_ROOT_PASSWORD=dummypassword
+      - MYSQL_DATABASE=social_media_database
+      - MYSQL_USER=social_media_user
+      - MYSQL_PASSWORD=dummypassword
+    healthcheck:
+        test: ["CMD", "mysqladmin" ,"ping", "-h", "localhost"]
+        timeout: 20s
+        retries: 10
   nats:
     image: nats:latest
     ports:
       - "4222:4222"
     network_mode: "host"
+
+secrets:
+    database_config:
+      file: ./social-media-service/DatabaseConfig.toml
+    twilio_config:
+      file: ./sms-sender-service/TwilioConfig.toml

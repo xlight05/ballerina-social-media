@@ -1,10 +1,5 @@
 natsUrl = "nats://localhost:4222"
 
-[twilioConfig]
-accountSid = "sid1"
-authToken = "token1"
-messageSenderId = "1234"
-
 [ballerina.observe]
 tracingEnabled=true
 tracingProvider="jaeger"

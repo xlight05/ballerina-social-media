@@ -1,0 +1,6 @@
+[databaseConfig]
+database = "social_media_database"
+user = "social_media_user"
+password = "dummypassword"
+host = "mysql8-service"
+port = 3306

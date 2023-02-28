@@ -1,0 +1,8 @@
+resources:
+  - mysql_deployment.yaml
+  - db-setup/target/kubernetes/ballerina_db_setup/ballerina_db_setup.yaml
+  - sentiment-analysis-service/target/kubernetes/sentiment_api/sentiment_api.yaml
+  - sms-sender-service/target/kubernetes/sms_sender_service/sms_sender_service.yaml
+  - social-media-service/target/kubernetes/social_media/social_media.yaml
+  - sts-service/target/kubernetes/sts_service/sts_service.yaml
+#Add nats deployment and enable

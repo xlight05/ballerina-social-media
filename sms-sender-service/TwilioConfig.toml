@@ -1,0 +1,4 @@
+[twilioConfig]
+accountSid = "sid1"
+authToken = "token1"
+messageSenderId = "1234"

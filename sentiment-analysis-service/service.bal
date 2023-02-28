@@ -11,11 +11,13 @@ listener http:Listener sentiment_ls = new (9099, {
     }
 });
 
+configurable string stsHost = "localhost";
+
 @http:ServiceConfig {
     auth: [
         {
             oauth2IntrospectionConfig: {
-                url: "https://localhost:9445/oauth2/introspect",
+                url: string `https://${stsHost}:9445/oauth2/introspect`,
                 tokenTypeHint: "access_token",
                 clientConfig: {
                     customHeaders: {"Authorization": "Basic YWRtaW46YWRtaW4="},

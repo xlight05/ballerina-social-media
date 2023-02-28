@@ -6,3 +6,10 @@ tag="0.0.1"
 [[container.copy.files]]
 sourceFile="./Config.toml"
 target="./Config.toml"
+
+[[cloud.config.secrets]]
+file="./TwilioConfig.toml"
+name="twilio-secrets"
+
+[[cloud.config.files]]
+file="./Config.toml"

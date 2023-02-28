@@ -10,3 +10,11 @@ target="./Config.toml"
 [[container.copy.files]]
 sourceFile="./resources/public.crt"
 target="./resources/public.crt"
+
+[[cloud.config.secrets]]
+file="./DatabaseConfigK8s.toml"
+name="database-secrets"
+
+[[cloud.config.files]]
+file="./K8sConfig.toml"
+

@@ -6,3 +6,10 @@ distribution = "2201.3.2"
 
 [build-options]
 observabilityIncluded = true
+cloud="k8s"
+
+[[dependency]]
+org = "ballerina"
+name = "cloud"
+version = "2.5.1"
+repository = "local"
